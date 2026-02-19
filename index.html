@@ -62,7 +62,7 @@
     </div>
   </section>
 
-  <section class="industry">
+  <section class="industry reveal">
     <div class="text">
       <h2>Industry Expertise</h2>
       <p>
@@ -74,7 +74,7 @@
     </div>
   </section>
 
-  <section class="expertise">
+  <section class="expertise reveal">
     <div class="card">
       <div class="icon">🏦</div>
       <h3>Financial Services</h3>
@@ -101,7 +101,7 @@
   </section>
 </section>
 
-<section class="team">
+<section class="team reveal">
   <div class="team-container">
     <h2>Our Team</h2>
     <div class="team-grid">
@@ -165,7 +165,7 @@
   </div>
 </section>
 
-<section class="trust">
+<section class="trust reveal">
   <div class="trust-container">
 
     <div class="trust-header">
@@ -239,7 +239,7 @@
 
 
 
- <div class="form-wrapper">
+ <div class="form-wrapper reveal">
     <div class="contact-container" id="contact">
     <h2 >Contact Us</h2>
     <form class="contact-form" >
@@ -346,6 +346,30 @@ const navLinks = document.getElementById("nav_links");
 toggle.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
+
+function revealOnScroll() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach((element) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+    const revealPoint = 100;
+
+    if (elementTop < windowHeight - revealPoint) {
+      element.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+
+/* ===== Navbar Scroll Effect ===== */
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
+});
+
 </script>
 </body>
 </html>
